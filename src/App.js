@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import NavBar from './components/NavBar';
-import './App.css';
+
 
 function App() {
   return (
@@ -8,9 +7,8 @@ function App() {
       <NavBar/>
 
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Limpiado el proyecto
         </p>
         <a
           className="App-link"

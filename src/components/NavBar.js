@@ -11,9 +11,9 @@ function NavBar() {
 
     return (
       <nav>
-        <div class="nav-wrapper">
-          <a href="index.html" class="brand-logo">Logo</a>
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <div className="nav-wrapper">
+          <a href="index.html" className="brand-logo">Logo</a>
+          <ul id="nav-mobile" className="left hide-on-med-and-down">
             <li><a href="index.html">Sass</a></li>
             <li><a href="index.html">Components</a></li>
             <li><a href="index.html">JavaScript</a></li>

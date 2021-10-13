@@ -1,3 +1,4 @@
+//archivo para testing, no creo q lo vaya a usar
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
