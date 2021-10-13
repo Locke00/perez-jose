@@ -12,11 +12,13 @@ function NavBar() {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a href="index.html" className="brand-logo">Logo</a>
-          <ul id="nav-mobile" className="left hide-on-med-and-down">
-            <li><a href="index.html">Sass</a></li>
-            <li><a href="index.html">Components</a></li>
-            <li><a href="index.html">JavaScript</a></li>
+          <a href="index.html" className="brand-logo">Tienda de Mascotas</a>
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><a href="index.html">Explorar Animales</a></li>
+            <li><a href="index.html">Carrito</a></li>
+            <li><a href="index.html">Favoritos</a></li>
+            <li><a href="index.html">Nosotros</a></li>
+            <li><a href="index.html">Ayuda</a></li>
           </ul>
         </div>
       </nav>

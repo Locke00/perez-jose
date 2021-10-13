@@ -7,9 +7,6 @@ function App() {
       <NavBar/>
 
       <header className="App-header">
-        <p>
-          Limpiado el proyecto
-        </p>
         <a
           className="App-link"
           href="https://reactjs.org"
