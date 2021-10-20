@@ -1,10 +1,18 @@
-import NavBar from './components/NavBar';
+import  { NavBar, FeedbackMessage, Name } from './components/NavBar';
+import { ItemListContainer } from "./components/containers/ItemListContainer"
 
 
 function App() {
+
+  const cad1 = 'nombre de la navbar'
+  const cad2 = 'otro nombre de la navbar'
+  const mensajeItemListContainer = 'Mensaje enviado al ItemListContainer'
   return (
     <div className="App">
-      <NavBar/>
+      <NavBar nombre={cad1} nombre2={cad2} />  
+      {/*<Name />
+      <FeedbackMessage />*/}
+      <ItemListContainer mensaje= {mensajeItemListContainer} />
 
       <header className="App-header">
         <a
