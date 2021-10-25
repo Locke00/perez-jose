@@ -1,4 +1,4 @@
-import  { NavBar, FeedbackMessage, Name } from './components/NavBar';
+import  { NavBar, FeedbackMessage, Name, SuperBotton } from './components/NavBar';
 import { ItemListContainer } from "./components/containers/ItemListContainer"
 
 
@@ -10,9 +10,13 @@ function App() {
   return (
     <div className="App">
       <NavBar nombre={cad1} nombre2={cad2} />  
-      {/*<Name />
+      <Name var1='variable1' componenteRender={SuperBotton}>
+        <h4> name element1</h4>
+      </Name>{/*
       <FeedbackMessage />*/}
       <ItemListContainer mensaje= {mensajeItemListContainer} />
+      <SuperBotton msg="mensaje-al-botton" />
+
 
       <header className="App-header">
         <a

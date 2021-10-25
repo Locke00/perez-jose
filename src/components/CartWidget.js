@@ -9,7 +9,7 @@ export function CartWidget() {
             
             {/*<img src={cartIcon} className="cart" alt="logo" />4 
             shopping_cart*/}
-            <a href="index.html"><i class="small material-icons left"  >shopping_cart</i></a>
+            <a href="index.html"><i className="small material-icons left"  >shopping_cart</i></a>
 
         </span>
     )
