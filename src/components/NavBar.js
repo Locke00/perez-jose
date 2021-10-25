@@ -1,35 +1,48 @@
 
+
+import { useState } from "react";
+
 import { CartWidget } from "./CartWidget"
 
-export function Name(props) {
-  console.log(props)
+/*export function Name(props) {
+  //console.log(props)
   
   return(
     <>
       <label>Comienza Name
-      {props.children}  {/*si llamara a props.children[0] seria un error ya q al se un solo elemento se pasa como objeto unico y no como array*/}
+      {props.children}  
       {props.componenteRender({msg: 'mensaje del Boton dentro de Name'})}
-      <SuperBotton msg='otro mensaje'/>
-
       Termina Name
       <br/></label>
     </>
   )
-}  
+} */ 
 
-export function FeedbackMessage(){
+/*export function FeedbackMessage(){
   return(
     <label>
       El componente de feedback
     </label>
   )
-}
+}*/
 
 
 export const SuperBotton = ({msg}) => {
+  //let boolVar
+  const [boolVar, setBoolVar] = useState(false)
+  //const estado = useState(false)
+  //let boolVar = false
+  
+  //console.log(estado);
+  
+  
   const mostrarEnConsola = () =>{
-    console.log('Se ha presionado Click!. Se el ha pasado el mensaje: '+msg)
+    //console.log('Se ha presionado Click!. Se el ha pasado el mensaje: '+msg)
+    console.log(boolVar);
+    //boolVar = !boolVar
+    setBoolVar(!boolVar)
   }
+  
   return (
     <>
       <button onClick={mostrarEnConsola}>Click!</button>
@@ -37,8 +50,30 @@ export const SuperBotton = ({msg}) => {
   )
 }
 
+/*export const SuperBotton2 = () => {
 
-export function NavBar({nombre, nombre2}) {
+  const [boolVar, setBoolVar] = useState(false)
+  //console.log(estado);
+ 
+  const mostrarEnConsola = () =>{
+    console.log(boolVar);
+    setBoolVar(!boolVar)
+  }
+  console.log('pre-render SuperBotton2()')
+  return (
+    <>
+      <button onClick={mostrarEnConsola}>Click2!</button>
+    </>
+  )
+}*/
+
+
+
+
+
+
+
+export function NavBar() {
   return (
     <nav>
       <div className="nav-wrapper">
@@ -51,7 +86,6 @@ export function NavBar({nombre, nombre2}) {
           <li><a href="index.html">Favoritos</a></li>
           <li><a href="index.html">Nosotros</a></li>
           <li><a href="index.html">Ayuda</a></li>
-          <li><a href="index.html">{nombre2}</a></li>
         </ul>
 
         {/*<label>{nombre} {nombre2}</label>*/}

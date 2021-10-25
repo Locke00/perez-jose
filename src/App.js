@@ -1,21 +1,23 @@
-import  { NavBar, FeedbackMessage, Name, SuperBotton } from './components/NavBar';
+//import  { NavBar, FeedbackMessage, Name, SuperBotton, SuperBotton2 } from './components/NavBar';
+import  { NavBar,  } from './components/NavBar';
 import { ItemListContainer } from "./components/containers/ItemListContainer"
 
 
 function App() {
 
-  const cad1 = 'nombre de la navbar'
-  const cad2 = 'otro nombre de la navbar'
   const mensajeItemListContainer = 'Mensaje enviado al ItemListContainer'
+  //console.log('pre-render App()')
   return (
     <div className="App">
-      <NavBar nombre={cad1} nombre2={cad2} />  
-      <Name var1='variable1' componenteRender={SuperBotton}>
+      <NavBar />  
+      {/*<Name var1='variable1' componenteRender={SuperBotton}>
         <h4> name element1</h4>
-      </Name>{/*
+      </Name>*
       <FeedbackMessage />*/}
       <ItemListContainer mensaje= {mensajeItemListContainer} />
-      <SuperBotton msg="mensaje-al-botton" />
+      {/*<SuperBotton2/>*/}
+
+      {/*<SuperBotton msg="mensaje-al-botton" />*/}
 
 
       <header className="App-header">
