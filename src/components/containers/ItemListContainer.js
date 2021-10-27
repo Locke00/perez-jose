@@ -10,10 +10,8 @@ export function ItemListContainer({mensaje}) {
 
 
   useEffect(() => {
-    //console.log('una sola vez')
     getFetch.then(
       (animales)=>{
-          //console.log(animales)
           setAnimales(animales)
       }  
     )

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import  { NavBar  } from './components/NavBar';
 import { ItemListContainer } from "./components/containers/ItemListContainer"
+import Prueba from "./prueba/Prueba";
 
 
 function App() {
@@ -10,39 +11,14 @@ function App() {
 
 
   const mensajeItemListContainer = 'Mensaje enviado al ItemListContainer'
-/*  
-  useEffect(()=>{
-    getFetch().then(
-      (animales)=>{
-          console.log(animales)
-          
-      }  
-    )
-    
-  })
-  
-  
-*/
-  /*
-  useEffect(() => {
-    console.log('con dependencia')
-  },[boolVar])
-  */
+
+
   const handleClick =()=>{
     setBoolVar(!boolVar)
   }
-  let nombres = [
-    {id:1, nombre:"Jose"},
-    {id:2, nombre:"Hernan"},
-    {id:3, nombre:"Franco"}
-  ]
   return (
     <div className="App" onClick={handleClick}>
-      {nombres.map(
-        (Persona)=>{
-          return <h2 key={Persona.id}>{Persona.nombre}</h2>
-        }
-      )}
+      {/*<Prueba />*/}
       <NavBar />  
       {/*<Name var1='variable1' componenteRender={SuperBotton}>
         <h4> name element1</h4>
