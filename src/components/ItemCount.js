@@ -31,7 +31,7 @@ export function ItemCount({stock,initial,onAdd}) {
                         <button className="col s2 waves-effect waves-light btn" onClick={incrementarContador}>+</button>
                     </div>
                     <br/>
-                    <div><button className="btn" onClick={agregarAlCarrito}>Agregar al Carrito </button></div>  
+                    <div><button className="btn" onClick={agregarAlCarrito}>Al Carrito </button></div>  
 
                 </div>
             </div>

@@ -20,11 +20,15 @@ const animales = [
     setTimeout(()=>{
       console.log('superdsp');
         resolve(animales)
-    }, 2000)
+    }, 3000)
     console.log('dsp');
     //reject('400 not found')
 })
 
-
-/*a = getFetch()
-console.log(a)*/
+export const getItem = (id) =>{
+  return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+          resolve(animales[id]);
+      }, 2000)});
+  
+}

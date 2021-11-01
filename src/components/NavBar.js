@@ -1,8 +1,9 @@
 
 
 import { useState } from "react";
-
+import { Link } from "react-router-dom";
 import { CartWidget } from "./CartWidget"
+
 
 /*export function Name(props) {
   //console.log(props)
@@ -81,11 +82,12 @@ export function NavBar() {
       <a href="index.html" className="brand-logo">    Tienda de Mascotas</a>
         
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          <li><a href="index.html">Explorar Animales</a></li>
-          <li><a href="index.html">Carrito</a></li>
-          <li><a href="index.html">Favoritos</a></li>
-          <li><a href="index.html">Nosotros</a></li>
-          <li><a href="index.html">Ayuda</a></li>
+          {/*}<li><Link to="/">Explorar Animales</Link></li>*/}
+          <li><a href="/">Explorar Animales</a></li>
+          <li><a href="/">Carrito</a></li>
+          <li><a href="/detalle">Favoritos</a></li>
+          <li><a href="/cart">Nosotros</a></li>
+          <li><a href="/cart">Ayuda</a></li>
         </ul>
 
         {/*<label>{nombre} {nombre2}</label>*/}

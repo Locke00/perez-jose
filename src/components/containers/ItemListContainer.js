@@ -7,26 +7,29 @@ import ItemList from "../ItemList";
 
 export function ItemListContainer({mensaje}) {
   const [animales, setAnimales] = useState(null)
-
+  //const [animales, setAnimales] = useState([]) tb podria ser asi
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    getFetch.then(
-      (animales)=>{
-          setAnimales(animales)
-      }  
-    )
+    getFetch
+    .then((animales)=>{
+          setAnimales(animales)})
+    .finally(()=>setLoading(false))
     
   },[])
 
 
     return(
         <span>
-          <ItemList items={animales != null ? animales : [] } />
+          { loading ? <h1>Cargando</h1> :
+
+            <ItemList items={animales != null ? animales : [] } />
+          }
 
           <label>
             {mensaje}
           </label>
-          <ItemCount stock="5" initial="1" />
+          {/*<ItemCount stock="5" initial="1" />*/}
 
         </span>
     )

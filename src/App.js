@@ -3,7 +3,8 @@ import { useState } from "react";
 import  { NavBar  } from './components/NavBar';
 import { ItemListContainer } from "./components/containers/ItemListContainer"
 import Prueba from "./prueba/Prueba";
-
+import {BrowserRouter as Router, Switch, Route, BrowserRouter} from 'react-router-dom'
+import ItemDetailContainer from "./components/containers/ItemDetailContainer";
 
 function App() {
   const [boolVar, setBoolVar] = useState(false)
@@ -16,15 +17,42 @@ function App() {
   const handleClick =()=>{
     setBoolVar(!boolVar)
   }
+
+  const animales = [
+    { id: 1, raza: "Ovejero Aleman", price: 370 , description: "Perros muy cariñosos que saben defender el hogar."},
+    { id: 2, raza: "Caniche", price: 370 , description: "Perros muy pequeños, de departamento."},
+    { id: 3, raza: "Cocker", price: 270 ,description: "Perros con mucho pelo. Son mansos."},
+    { id: 4, raza: "Pitbull", price: 400 ,description: "Buenos perros guardianes aunque pueden ser peligrosos para los dueños."},
+    { id: 5, raza: "Doberman", price: 550 ,description: "Perros rápidos."},
+    { id: 6, raza: "Pollitos", price: 110 ,description: "Adorables pollitos"},
+    { id: 7, raza: "Caballo", price: 190 ,description: "Buenos caballos, no usar para arrastras carretas."},
+  ];
+
+
   return (
     <div className="App" onClick={handleClick}>
+      
       {/*<Prueba />*/}
       <NavBar />  
+      <ItemDetailContainer id={2}/>
+      <ItemListContainer mensaje= {mensajeItemListContainer} />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/'>
+            {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
+            {/*<Route path='/categoria' component={ItemListContainer} />*/}
+            {/*<Route path='/detalle' component={ItemDetailContainer} />*/}
+            
+          </Route>
+        </Switch>
+
+      </BrowserRouter>
+      
       {/*<Name var1='variable1' componenteRender={SuperBotton}>
         <h4> name element1</h4>
       </Name>*
       <FeedbackMessage />*/}
-      <ItemListContainer mensaje= {mensajeItemListContainer} />
+      
       {/*<SuperBotton2/>*/}
 
       {/*<SuperBotton msg="mensaje-al-botton" />*/}
