@@ -25,10 +25,19 @@ const animales = [
     //reject('400 not found')
 })
 
+export const getItem = (clave) =>{
+  return new Promise((resolve, reject)=>{
+      setTimeout(()=>{
+          resolve(animales.find(animales => animales.id === clave) );
+      }, 2000)});
+}
+
+
+/*
 export const getItem = (id) =>{
   return new Promise((resolve, reject)=>{
       setTimeout(()=>{
           resolve(animales[id]);
       }, 2000)});
-  
-}
+}*/
+

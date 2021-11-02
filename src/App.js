@@ -3,7 +3,7 @@ import { useState } from "react";
 import  { NavBar  } from './components/NavBar';
 import { ItemListContainer } from "./components/containers/ItemListContainer"
 import Prueba from "./prueba/Prueba";
-import {BrowserRouter as Router, Switch, Route, BrowserRouter} from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import ItemDetailContainer from "./components/containers/ItemDetailContainer";
 
 function App() {
@@ -34,19 +34,28 @@ function App() {
       
       {/*<Prueba />*/}
       <NavBar />  
-      <ItemDetailContainer id={2}/>
-      <ItemListContainer mensaje= {mensajeItemListContainer} />
-      <BrowserRouter>
+      {/*<ItemDetailContainer id={2}/>*/}
+      {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
+      
+      <Router>
         <Switch>
           <Route exact path='/'>
+            <ItemListContainer  />
             {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
             {/*<Route path='/categoria' component={ItemListContainer} />*/}
             {/*<Route path='/detalle' component={ItemDetailContainer} />*/}
-            
           </Route>
+          <Route exact path='/categoria' component={ItemListContainer} >
+            <ItemListContainer  />
+          </Route>
+
+          <Route exact path='/detalle'>
+            <ItemDetailContainer id={5}/>
+          </Route>
+
         </Switch>
 
-      </BrowserRouter>
+      </Router>
       
       {/*<Name var1='variable1' componenteRender={SuperBotton}>
         <h4> name element1</h4>

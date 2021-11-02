@@ -5,7 +5,7 @@ import { useState } from "react";
 import ItemList from "../ItemList";
 
 
-export function ItemListContainer({mensaje}) {
+export function ItemListContainer() {
   const [animales, setAnimales] = useState(null)
   //const [animales, setAnimales] = useState([]) tb podria ser asi
   const [loading, setLoading] = useState(true)
@@ -26,9 +26,9 @@ export function ItemListContainer({mensaje}) {
             <ItemList items={animales != null ? animales : [] } />
           }
 
-          <label>
+          {/*<label>
             {mensaje}
-          </label>
+          </label>*/}
           {/*<ItemCount stock="5" initial="1" />*/}
 
         </span>
