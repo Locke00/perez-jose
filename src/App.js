@@ -5,6 +5,8 @@ import { ItemListContainer } from "./components/containers/ItemListContainer"
 import Prueba from "./prueba/Prueba";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import ItemDetailContainer from "./components/containers/ItemDetailContainer";
+import { Cart } from "./components/cart/Cart";
+import { useParams } from 'react-router';
 
 function App() {
   const [boolVar, setBoolVar] = useState(false)
@@ -17,7 +19,7 @@ function App() {
   const handleClick =()=>{
     setBoolVar(!boolVar)
   }
-
+/*
   const animales = [
     { id: 1, raza: "Ovejero Aleman", price: 370 , description: "Perros muy cariñosos que saben defender el hogar."},
     { id: 2, raza: "Caniche", price: 370 , description: "Perros muy pequeños, de departamento."},
@@ -27,17 +29,18 @@ function App() {
     { id: 6, raza: "Pollitos", price: 110 ,description: "Adorables pollitos"},
     { id: 7, raza: "Caballo", price: 190 ,description: "Buenos caballos, no usar para arrastras carretas."},
   ];
-
+*/
 
   return (
     <div className="App" onClick={handleClick}>
       
       {/*<Prueba />*/}
-      <NavBar />  
       {/*<ItemDetailContainer id={2}/>*/}
       {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
       
       <Router>
+        <NavBar />  
+
         <Switch>
           <Route exact path='/'>
             <ItemListContainer  />
@@ -45,13 +48,25 @@ function App() {
             {/*<Route path='/categoria' component={ItemListContainer} />*/}
             {/*<Route path='/detalle' component={ItemDetailContainer} />*/}
           </Route>
-          <Route exact path='/categoria' component={ItemListContainer} >
+          
+          <Route exact path='/categoria/:id'>
             <ItemListContainer  />
           </Route>
 
-          <Route exact path='/detalle'>
-            <ItemDetailContainer id={5}/>
+          {/*<Route exact path='/categoria/:idCategoria' component={ItemListContainer} >
+            <ItemListContainer  />
+            </Route>*/}
+
+          <Route exact path='/detalle/:id'>
+            {/*<ItemDetailContainer id={5}/>*/}
+            {console.log('pasa x aca')}
+            <ItemDetailContainer />
           </Route>
+          
+          <Route exact path='/cart'>
+            <Cart/>
+          </Route>
+          
 
         </Switch>
 

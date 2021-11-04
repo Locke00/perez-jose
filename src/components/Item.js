@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 export function Item({item}) {
 
@@ -15,9 +16,14 @@ export function Item({item}) {
                 <div className="card blue-grey darken-1">
                     <div className="card-content white-text">
                        <p>Codigo: {item.id}</p>
+                       <p>Tipo: {item.categoria}</p>
                        <span className="card-title">{item.raza}</span>
                        <p>{item.description}</p>
-                       <div><button className="btn">Ver mas Información </button></div>  
+                       <div>
+                            <Link to={`/detalle/${item.id}`}>
+                                <button className="btn"> Ver mas Información </button>
+                            </Link>
+                       </div>  
                     </div>
                    
                 </div>

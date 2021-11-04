@@ -1,8 +1,10 @@
-import ItemCount from "../ItemCount"
 import { useEffect } from 'react';
 import { getFetch } from '../../services/getFetch'
 import { useState } from "react";
 import ItemList from "../ItemList";
+import { useParams } from 'react-router';
+
+
 
 
 export function ItemListContainer() {
@@ -10,26 +12,31 @@ export function ItemListContainer() {
   //const [animales, setAnimales] = useState([]) tb podria ser asi
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    getFetch
-    .then((animales)=>{
-          setAnimales(animales)})
-    .finally(()=>setLoading(false))
-    
-  },[])
+  const {id} = useParams()
 
+  useEffect(() => {
+    //setLoading(true)
+    if (id) {
+      getFetch
+      .then((animales)=>{
+            setAnimales(animales.filter(animal=>animal.categoria===id)  )})
+      .catch(err=> console.log(err))      
+      .finally(()=>setLoading(false))
+    } else {
+      getFetch
+      .then((animales)=>{
+            setAnimales(animales)})
+      .catch(err=> console.log(err))      
+      .finally(()=>setLoading(false))
+    }
+  },[id])
 
     return(
         <span>
-          { loading ? <h1>Cargando</h1> :
+          { loading ? <h3>Cargando...</h3> :
 
             <ItemList items={animales != null ? animales : [] } />
           }
-
-          {/*<label>
-            {mensaje}
-          </label>*/}
-          {/*<ItemCount stock="5" initial="1" />*/}
 
         </span>
     )

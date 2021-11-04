@@ -1,5 +1,7 @@
 //import cartIcon from './cart.png';
 
+import { Link } from "react-router-dom"
+
 export function CartWidget() {
     return(
         <span>
@@ -9,7 +11,10 @@ export function CartWidget() {
             
             {/*<img src={cartIcon} className="cart" alt="logo" />4 
             shopping_cart*/}
-            <a href="index.html"><i className="small material-icons left"  >shopping_cart</i></a>
+            
+            
+            <Link to='/cart'><i className="small material-icons left"  >shopping_cart</i></Link>
+            
 
         </span>
     )

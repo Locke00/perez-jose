@@ -79,15 +79,26 @@ export function NavBar() {
     <nav>
       <div className="nav-wrapper">
       <CartWidget />
-      <a href="index.html" className="brand-logo">    Tienda de Mascotas</a>
+      <Link to='/' className="brand-logo">Tienda de Mascotas</Link>       
+
+      {/*<a href="index.html" className="brand-logo">    Tienda de Mascotas</a>*/}
         
         <ul id="nav-mobile" className="right hide-on-med-and-down">
-          {/*}<li><Link to="/">Explorar Animales</Link></li>*/}
-          <li><a href="/">Explorar Animales</a></li>
-          <li><a href="/">Carrito</a></li>
+
+          <li><Link to="/">Inicio</Link></li>
+          <li><Link to="/">Explorar Animales</Link></li>
+          <li><Link to="/categoria/perro">Perros</Link></li>
+          <li><Link to="/categoria/gato">Gatos</Link></li>
+          {/*<li><Link to="/detalle">Favoritos</Link></li>*/}
+          <li><Link to="/cart">Carrito</Link></li>
+{/*
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/categoria">Explorar Animales</a></li>
           <li><a href="/detalle">Favoritos</a></li>
-          <li><a href="/cart">Nosotros</a></li>
-          <li><a href="/cart">Ayuda</a></li>
+          <li><a href="/cart">Carrito</a></li>
+*/}          
+
+          {/*<li><a href="/cart">Ayuda</a></li>*/}
         </ul>
 
         {/*<label>{nombre} {nombre2}</label>*/}
