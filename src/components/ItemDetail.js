@@ -14,7 +14,7 @@ export function ItemDetail({animal}) {
 
     const onAdd = (cantidad)=>{
         setQuantity(cantidad)
-        console.log("Cantidad Agregada al carrito: "+quantity)
+        console.log("Cantidad Agregada al carrito: "+cantidad)
     }
   
 
