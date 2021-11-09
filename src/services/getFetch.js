@@ -22,7 +22,7 @@ const animales = [
     setTimeout(()=>{
       //console.log('superdsp');
         resolve(animales)
-    }, 3000)
+    }, 300)
     //console.log('dsp');
     //reject('400 not found')
 })
@@ -33,9 +33,9 @@ export const getItem = (clave) =>{
           //console.log("clave"+clave)
           //console.log("dentro de claves, animales"+JSON.stringify(animales))
           resolve(animales.find(animales => animales.id === parseInt(clave) ));
-      }, 2000)});
+      }, 200)});
 }
-
+//se multiplicaron x0.1 los retardos, para q testear mas rapido
 
 /*
 export const getItem = (id) =>{

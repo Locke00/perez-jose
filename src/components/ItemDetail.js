@@ -1,6 +1,24 @@
+import { useEffect } from "react"
+import { useState } from 'react';
+
+import EventoClick from "../prueba/eventos/EventoClick"
+import Input from "../prueba/eventos/Input"
+import Intercambiabilidad from "../prueba/eventos/Intercambiabilidad"
+import PreventEvent from "../prueba/eventos/PreventEvent"
+
 import ItemCount from "./ItemCount"
 
+
 export function ItemDetail({animal}) {
+    const [quantity, setQuantity] = useState(1) 
+
+    const onAdd = (cantidad)=>{
+        setQuantity(cantidad)
+        console.log("Cantidad Agregada al carrito: "+quantity)
+    }
+  
+
+    
     return(
         <>
             <div className="row">
@@ -13,11 +31,16 @@ export function ItemDetail({animal}) {
                         <p>{animal.description}</p>
                         
                         </div>
-                        <ItemCount stock="5" initial="1" />
+                        <ItemCount stock="5" initial={quantity} onAdd={onAdd}/>
                     
                     </div>
                 </div>
             </div>
+            {/*<Input />*/}
+            <EventoClick />
+            <PreventEvent />
+            <Intercambiabilidad />
+            {/*<PreventEvent />*/}
 
         </>
     )

@@ -2,11 +2,13 @@
 import { useState } from "react";
 import  { NavBar  } from './components/NavBar';
 import { ItemListContainer } from "./components/containers/ItemListContainer"
-import Prueba from "./prueba/Prueba";
+import Prueba0 from "./prueba/Prueba0";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import ItemDetailContainer from "./components/containers/ItemDetailContainer";
 import { Cart } from "./components/cart/Cart";
 import { useParams } from 'react-router';
+import { Prueba } from "./prueba/Prueba";
+import { Eventos } from "./prueba/Eventos";
 
 function App() {
   const [boolVar, setBoolVar] = useState(false)
@@ -35,6 +37,8 @@ function App() {
     <div className="App" onClick={handleClick}>
       
       {/*<Prueba />*/}
+      {/*<Prueba />*/}
+      {/*<Prueba0 />*/}
       {/*<ItemDetailContainer id={2}/>*/}
       {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
       
@@ -59,14 +63,23 @@ function App() {
 
           <Route exact path='/detalle/:id'>
             {/*<ItemDetailContainer id={5}/>*/}
-            {console.log('pasa x aca')}
+            {/*console.log('pasa x aca')*/}
             <ItemDetailContainer />
           </Route>
           
           <Route exact path='/cart'>
             <Cart/>
           </Route>
-          
+
+          <Route exact path='/prueba'>
+            <Prueba/>
+          </Route>
+
+          <Route exact path='/prueba/eventos'>
+            <Eventos/>
+          </Route>
+
+
 
         </Switch>
 
@@ -88,7 +101,7 @@ function App() {
 
 
 
-      <header className="App-header">
+      {/*<header className="App-header">
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -96,9 +109,9 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-
         </a>
-      </header>
+      </header>*/}
+
     </div>
   );
 }

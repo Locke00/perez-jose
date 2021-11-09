@@ -25,7 +25,9 @@ export function ItemDetailContainer() {
 
 
     return(
-        <>
+        <div 
+          //onClick={   (evt)=>{console.log('soy un evento de app')}}
+          >
             {/*console.log("animal:"+animal)*/}
             { loading ? <h3>Cargando...</h3> :
               animal!=null ? <ItemDetail animal={animal} /> : null 
@@ -33,7 +35,7 @@ export function ItemDetailContainer() {
 
             
             
-        </>
+        </div>
     )
 }
 

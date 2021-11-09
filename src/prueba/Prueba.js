@@ -1,16 +1,21 @@
-import MapTest from "./MapTest"
-import MapTest2 from "./MapTest2"
-import PromiseTest from "./PromiseTest"
+import React from 'react'
+import { Link } from 'react-router-dom'
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { Eventos } from './Eventos'
 
-
-const Prueba = () =>{
-    return(
+export const Prueba = () => {
+    return (
         <>
-            <MapTest />
-            <PromiseTest />
-            {/*<MapTest2 />*/}
+            <h4>Bloque de prueba</h4>
+            <Link to='/prueba/eventos' className="brand-logo">Eventos</Link>
+            <Router>
+                <Switch>
+                    <Route exact path='/prueba/eventos'>
+                        <Eventos />
+                    </Route>
+                </Switch>
+            </Router>
+
         </>
     )
 }
-export default Prueba
-
