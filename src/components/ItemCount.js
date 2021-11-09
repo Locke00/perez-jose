@@ -11,30 +11,20 @@ export function ItemCount({stock,initial,onAdd}) {
     };
 
 
-    function InputCart({count,onAdd}){
-      return(
-        <button
-          variant="success"
-          onClick={()=>{
-            onAdd(count)
-          }}>
-          Agregar al Carrito  
-
-        </button>
-      )
-
-    
+    const ButtonCount= ({count,onAdd})=> {
+      return <button className="btn btn-outline-primary" onClick={()=>{
+          console.log('Producto agregado')
+          onAdd(count)
+          handleInput()
+        }
+      }>Agregar Al carrito</button>
     }
-
-    const InputBuy = () => {
-      return (
-        <button as={Link} to="/cart" variant="primary">
-          Continuar la Compra
-        </button>
-      );
-    };
-
-
+  
+  const InputCount= ()=> {
+      //return <button as={Link} to="/cart" className="btn btn-outline-primary">Terminar compra</button>
+      return <Link to="/cart" className="btn btn-outline-primary">Terminar compra</Link>
+  }
+  
 
 
 
@@ -62,25 +52,12 @@ export function ItemCount({stock,initial,onAdd}) {
                         <button className="col s2 waves-effect waves-light btn" onClick={decrementarContador}>-</button>
                         <span className="col s4 waves-effect teal lighten-2 center-align">{count}</span>
                         <button className="col s2 waves-effect waves-light btn" onClick={incrementarContador}>+</button>
-                        <Button
-              						onClick={() => setCount(count - 1)}
-              						size="lg"
-              						className="bi bi-dash-circle-fill"
-              						disabled={count === 1}></Button>
-
-                    <Button
-          						onClick={() => setCount(count + 1)}
-          						size="lg"
-          						color="danger"
-          						className="bi bi-plus-circle-fill"
-          						disabled={count === stock}></Button>
-				</td>
-
 
                     </div>
                     <br/>
-                    <div><button className="btn" onClick={onAdd}>Al Carrito </button></div>  
-
+                    
+                    <div>{inputType==='input' ? <ButtonCount count={count} onAdd={onAdd}/> : <InputCount />  }  </div>
+                    
                 </div>
             </div>
         </div>

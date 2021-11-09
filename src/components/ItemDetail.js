@@ -37,9 +37,9 @@ export function ItemDetail({animal}) {
                 </div>
             </div>
             {/*<Input />*/}
-            <EventoClick />
-            <PreventEvent />
-            <Intercambiabilidad />
+            {/*<EventoClick />*/}
+            {/*<PreventEvent />*/}
+            {/*<Intercambiabilidad />*/}
             {/*<PreventEvent />*/}
 
         </>
