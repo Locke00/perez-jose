@@ -12,7 +12,7 @@ export function ItemDetailContainer() {
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        console.log(id);
+        //console.log(id);
         getItem(id)
         .then((animal)=>{
               console.log('dentro del effect'+animal)

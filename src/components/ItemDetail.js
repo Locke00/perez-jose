@@ -12,22 +12,22 @@ import ItemCount from "./ItemCount"
 
 
 export function ItemDetail({animal}) {
-    const [quantity, setQuantity] = useState(0) 
+    const [quantity, setQuantity] = useState(1) 
 
     const {cartList,mostrarListado,agregarAlCarrito} = useCartContext()
     //console.log(cartList)
     //console.log(mostrarListado);
-    console.log(mostrarListado);
+    //console.log(mostrarListado);
 
 
     const onAdd = (cantidad)=>{
         setQuantity(cantidad)
-        console.log("Cantidad Agregada al carrito: "+cantidad)
+        console.log("Animal elegido: "+animal.id)
+        //console.log("Cantidad Agregada al carrito: "+cantidad) hay q hacer un condicional en caso q agregar al carrito
+        //no tenga exito xq ya estaba en el carrito, q no muestre el console.log de lo agregado
         agregarAlCarrito({animal,quantity: cantidad})
     }
     console.log(cartList);
-  
-
     
     return(
         <>

@@ -11,27 +11,23 @@ const CartContextProvider = ({children}) => {
 
 
 
-    function isInCart(id) { //aqui tengo q chequear si ya esta agregado
-        let retorno = 0
-        if(id === id){
-            retorno = true
-        } else {
-            retorno = false
-        }
-
-        return retorno
-    }
-        
 
 
 
     function agregarAlCarrito(animales) {
         //acá hay q agregarle logica de q no agregue repetidos, if idInCart(animal,cartList), recien haga el setCartList
         //sino q mande un alert, (q no admita duplicados)
-        setCartList([
-            ...cartList,
-            animales
-        ])
+
+        const findItem = cartList.find((item)=>item.animal.id===animales.animal.id)
+        if (findItem){
+            setCartList(cartList)
+            console.log('elemento ya esta en el carrito');
+        } else {
+            setCartList([
+                ...cartList,
+                animales
+            ])
+        }
     }
 
     const mostrarListado =() =>{
@@ -42,7 +38,7 @@ const CartContextProvider = ({children}) => {
         <CartContext.Provider value={{
             cartList,
             mostrarListado,
-            agregarAlCarrito
+            agregarAlCarrito,
             //aqui adentro hay q inyectar mas cosas,
             //metodos recomendados pero no obligatorios:
             //addItem(item,quantity) //agregar cierta cantidad de un item al carrito
