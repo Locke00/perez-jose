@@ -1,5 +1,7 @@
 import { useEffect } from "react"
 import { useState } from 'react';
+import { useCartContext } from "../context/CartContext";
+
 
 import EventoClick from "../prueba/eventos/EventoClick"
 import Input from "../prueba/eventos/Input"
@@ -10,12 +12,20 @@ import ItemCount from "./ItemCount"
 
 
 export function ItemDetail({animal}) {
-    const [quantity, setQuantity] = useState(1) 
+    const [quantity, setQuantity] = useState(0) 
+
+    const {cartList,mostrarListado,agregarAlCarrito} = useCartContext()
+    //console.log(cartList)
+    //console.log(mostrarListado);
+    console.log(mostrarListado);
+
 
     const onAdd = (cantidad)=>{
         setQuantity(cantidad)
         console.log("Cantidad Agregada al carrito: "+cantidad)
+        agregarAlCarrito({animal,quantity: cantidad})
     }
+    console.log(cartList);
   
 
     

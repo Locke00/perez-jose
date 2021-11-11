@@ -9,6 +9,9 @@ import { Cart } from "./components/cart/Cart";
 import { useParams } from 'react-router';
 import { Prueba } from "./prueba/Prueba";
 import { Eventos } from "./prueba/Eventos";
+import CartContext from "./context/CartContext";
+import CartContextProvider from "./context/CartContext";
+
 
 function App() {
   const [boolVar, setBoolVar] = useState(false)
@@ -41,49 +44,51 @@ function App() {
       {/*<Prueba0 />*/}
       {/*<ItemDetailContainer id={2}/>*/}
       {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
-      
-      <Router>
-        <NavBar />  
 
-        <Switch>
-          <Route exact path='/'>
-            <ItemListContainer  />
-            {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
-            {/*<Route path='/categoria' component={ItemListContainer} />*/}
-            {/*<Route path='/detalle' component={ItemDetailContainer} />*/}
-          </Route>
-          
-          <Route exact path='/categoria/:id'>
-            <ItemListContainer  />
-          </Route>
+      <CartContextProvider>
+        <Router>
+          <NavBar />  
+  
+          <Switch>
+            <Route exact path='/'>
+              <ItemListContainer  />
+              {/*<ItemListContainer mensaje= {mensajeItemListContainer} />*/}
+              {/*<Route path='/categoria' component={ItemListContainer} />*/}
+              {/*<Route path='/detalle' component={ItemDetailContainer} />*/}
+            </Route>
+            
+            <Route exact path='/categoria/:id'>
+              <ItemListContainer  />
+            </Route>
 
-          {/*<Route exact path='/categoria/:idCategoria' component={ItemListContainer} >
-            <ItemListContainer  />
-            </Route>*/}
+            {/*<Route exact path='/categoria/:idCategoria' component={ItemListContainer} >
+              <ItemListContainer  />
+              </Route>*/}
 
-          <Route exact path='/detalle/:id'>
-            {/*<ItemDetailContainer id={5}/>*/}
-            {/*console.log('pasa x aca')*/}
-            <ItemDetailContainer />
-          </Route>
-          
-          <Route exact path='/cart'>
-            <Cart/>
-          </Route>
+            <Route exact path='/detalle/:id'>
+              {/*<ItemDetailContainer id={5}/>*/}
+              {/*console.log('pasa x aca')*/}
+              <ItemDetailContainer />
+            </Route>
+            
+            <Route exact path='/cart'>
+              <Cart/>
+            </Route>
 
-          <Route exact path='/prueba'>
-            <Prueba/>
-          </Route>
+            <Route exact path='/prueba'>
+              <Prueba/>
+            </Route>
 
-          <Route exact path='/prueba/eventos'>
-            <Eventos/>
-          </Route>
+            <Route exact path='/prueba/eventos'>
+              <Eventos/>
+            </Route>
 
 
 
-        </Switch>
+          </Switch>
 
-      </Router>
+        </Router>
+      </CartContextProvider>
       
       {/*<Name var1='variable1' componenteRender={SuperBotton}>
         <h4> name element1</h4>

@@ -15,6 +15,7 @@ export function ItemCount({stock,initial,onAdd}) {
       return <button className="btn btn-outline-primary" onClick={()=>{
           console.log('Producto agregado')
           onAdd(count)
+//          console.log('Productos agregados al carrito: '+count)
           handleInput()
         }
       }>Agregar Al carrito</button>
@@ -30,13 +31,15 @@ export function ItemCount({stock,initial,onAdd}) {
 
     function incrementarContador() {
         if (count<stock){
-          setCount(count + 1);
+          setCount(count + 1)
+
         }
       }
   
     function decrementarContador() {
       if (count>1)  {
-        setCount(count - 1);
+        setCount(count - 1)
+
       }
     }
 
