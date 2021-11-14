@@ -9,27 +9,32 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
 
 
-
-
-
-
-
-    function agregarAlCarrito(animales) {
+    function agregarAlCarrito(selectedAnimal) {
         //acá hay q agregarle logica de q no agregue repetidos, if idInCart(animal,cartList), recien haga el setCartList
         //sino q mande un alert, (q no admita duplicados)
 
-        const findItem = cartList.find((item)=>item.animal.id===animales.animal.id)
+        const findItem = cartList.find((item)=>item.animal.id===selectedAnimal.animal.id)
         if (findItem){
-            setCartList(cartList)
+            console.log(findItem)
+            findItem.quantity = findItem.quantity+selectedAnimal.quantity
+            console.log('cantidad total:'+ findItem.quantity)
+            setCartList([
+                ...cartList.filter((item)=>{
+                    return (item.animal.id !== findItem.animal.id)?true:false
+                }),
+                findItem
+            ])
+            //setCartList(cartList)
             console.log('elemento ya esta en el carrito');
         } else {
             setCartList([
                 ...cartList,
-                animales
+                selectedAnimal
             ])
         }
     }
-
+    //item= cartList[0].amimal
+    //id1=item.id
     const mostrarListado =() =>{
         console.log(cartList);
     }
