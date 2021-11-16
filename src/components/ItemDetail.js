@@ -8,6 +8,9 @@ import Input from "../prueba/eventos/Input"
 import Intercambiabilidad from "../prueba/eventos/Intercambiabilidad"
 import PreventEvent from "../prueba/eventos/PreventEvent"
 
+import AppEcommerce from "../prueba/rendering/AppEcommerce"
+
+
 import ItemCount from "./ItemCount"
 
 
@@ -46,11 +49,19 @@ export function ItemDetail({animal}) {
                     </div>
                 </div>
             </div>
+            {/*-- Eventos -- */}
             {/*<Input />*/}
             {/*<EventoClick />*/}
             {/*<PreventEvent />*/}
             {/*<Intercambiabilidad />*/}
             {/*<PreventEvent />*/}
+
+            {/*-- rendering condicional -- */}
+            <AppEcommerce>
+
+            </AppEcommerce>
+
+
 
         </>
     )
