@@ -38,6 +38,8 @@ const CartContextProvider = ({children}) => {
         return cartList.reduce((acum, prod)=> acum + (prod.quantity * prod.animal.price) , 0)  //el 0 es el valor inicial del acumulador
     }
 
+
+
     //item= cartList[0].animal
     //id1=item.id
     const mostrarListado = () =>{
@@ -48,6 +50,9 @@ const CartContextProvider = ({children}) => {
         setCartList(cartList.filter(prod => prod.animal.id !== id  ))
     }
 
+    const obtenerQuantityTotal = () => {
+        return cartList.reduce((acum, prod)=> acum + prod.quantity , 0)
+    }
 
 
     const borrarElCarrito = () =>{
@@ -65,7 +70,8 @@ const CartContextProvider = ({children}) => {
             agregarAlCarrito,
             precioTotal,
             borrarItem,
-            borrarElCarrito
+            borrarElCarrito,
+            obtenerQuantityTotal
             //aqui adentro hay q inyectar mas cosas,
             //metodos recomendados pero no obligatorios:
             //addItem(item,quantity) //agregar cierta cantidad de un item al carrito
