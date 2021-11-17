@@ -64,6 +64,7 @@ const CartContextProvider = ({children}) => {
             mostrarListado,
             agregarAlCarrito,
             precioTotal,
+            borrarItem,
             borrarElCarrito
             //aqui adentro hay q inyectar mas cosas,
             //metodos recomendados pero no obligatorios:
