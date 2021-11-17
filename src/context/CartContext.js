@@ -40,16 +40,31 @@ const CartContextProvider = ({children}) => {
 
     //item= cartList[0].animal
     //id1=item.id
-    const mostrarListado =() =>{
+    const mostrarListado = () =>{
         console.log(cartList);
     }
+
+    const borrarItem = (id) => {
+        setCartList(cartList.filter(prod => prod.animal.id !== id  ))
+    }
+
+
+
+    const borrarElCarrito = () =>{
+        setCartList([])
+    }
+
+
+
+
     return (
 
         <CartContext.Provider value={{
             cartList,
             mostrarListado,
             agregarAlCarrito,
-            precioTotal
+            precioTotal,
+            borrarElCarrito
             //aqui adentro hay q inyectar mas cosas,
             //metodos recomendados pero no obligatorios:
             //addItem(item,quantity) //agregar cierta cantidad de un item al carrito
