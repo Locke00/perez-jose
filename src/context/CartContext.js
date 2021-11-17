@@ -33,7 +33,12 @@ const CartContextProvider = ({children}) => {
             ])
         }
     }
-    //item= cartList[0].amimal
+
+    const precioTotal =()=> {
+        return cartList.reduce((acum, prod)=> acum + (prod.quantity * prod.animal.price) , 0)  //el 0 es el valor inicial del acumulador
+    }
+
+    //item= cartList[0].animal
     //id1=item.id
     const mostrarListado =() =>{
         console.log(cartList);
@@ -44,6 +49,7 @@ const CartContextProvider = ({children}) => {
             cartList,
             mostrarListado,
             agregarAlCarrito,
+            precioTotal
             //aqui adentro hay q inyectar mas cosas,
             //metodos recomendados pero no obligatorios:
             //addItem(item,quantity) //agregar cierta cantidad de un item al carrito

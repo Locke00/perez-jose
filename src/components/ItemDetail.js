@@ -57,9 +57,8 @@ export function ItemDetail({animal}) {
             {/*<PreventEvent />*/}
 
             {/*-- rendering condicional -- */}
-            <AppEcommerce>
-
-            </AppEcommerce>
+            {/*<AppEcommerce> */}
+            {/*</AppEcommerce> */}
 
 
 
