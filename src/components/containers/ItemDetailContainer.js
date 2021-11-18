@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from "react";
 import { getItem } from "../../services/getFetch";
 import { useParams } from "react-router";
+import { getFirestore } from '../../services/getFirestore';
 
 
 export function ItemDetailContainer() {
@@ -13,11 +14,19 @@ export function ItemDetailContainer() {
 
     useEffect(() => {
         //console.log(id);
-        getItem(id)
-        .then((animal)=>{
-              console.log('dentro del effect'+animal)
-              setAnimal(animal)})
-        .finally(()=>setLoading(false))      
+        // getItem(id)
+        // .then((animal)=>{
+        //       console.log('dentro del effect'+animal)
+        //       setAnimal(animal)})
+        // .finally(()=>setLoading(false))      
+
+        const db = getFirestore()
+        const dbQuery = db.collection("items").doc(id).get()
+        dbQuery
+        .then((resp)=> {  setAnimal({id: resp.id, ...resp.data()})  } )
+        .catch(err=> console.log(err))      
+        .finally(()=>setLoading(false))
+    
 
         
       },[id])
