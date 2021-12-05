@@ -18,6 +18,7 @@ export function Item({item}) {
                        <p>Codigo: {item.id}</p>
                        <p>Tipo: {item.categoria}</p>
                        <span className="card-title">{item.raza}</span>
+
                        <p>{item.description}</p>
                        <div>
                             <Link to={`/detalle/${item.id}`}>

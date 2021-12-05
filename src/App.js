@@ -87,6 +87,11 @@ function App() {
 
           </Switch>
 
+          {/*<figure className="img">
+            <img src={`./assets/img/cocker.jpg`}/>
+            </figure>*/}
+
+
         </Router>
       </CartContextProvider>
       

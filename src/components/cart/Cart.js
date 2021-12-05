@@ -6,6 +6,10 @@ import { getFirestore } from '../../services/getFirestore';
 import firebase from "firebase"
 //import 'firebase/firestore'
 
+function validarEmail(email1,email2){
+    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    return emailRegex.test(email1) && (email1 === email2)
+}
 
 function FooterCart() {
     const {obtenerQuantityTotal,precioTotal,borrarElCarrito} = useCartContext()
@@ -37,14 +41,24 @@ function FooterCart() {
 
 
 export const Cart = () => {
+    const [idOrden, setIdOrden] = useState('')
     const {cartList, precioTotal, borrarElCarrito, borrarItem, obtenerQuantityTotal} = useCartContext()
 
     const [formData, setFormData] = useState({
-        name : '',
-        phone : '',
-        email : ''
+        name : 'jose',
+        phone : '121212',
+        email : 'a@a.com',
+        reemail : 'a@a.com'
     })
 
+    /*
+    const [formData, setFormData] = useState({
+        name : '',
+        phone : '',
+        email : '',
+        reemail : ''
+    })
+*/
 /*    const orden = {
         buyer : {
             name : 'jose perez',
@@ -69,28 +83,36 @@ export const Cart = () => {
     const generarOrden = (e) => {
         e.preventDefault()
         let orden = {}      //genera un objeto vacio
-        orden.date = firebase.firestore.Timestamp.fromDate(new Date())
-        orden.buyer = formData
-        orden.total = precioTotal()
-        orden.items = cartList.map(cartItem=> {
-            const id = cartItem.animal.id
-            const raza = cartItem.animal.raza
-            const precio = cartItem.animal.price * cartItem.quantity
-            return {id, raza, precio}
-        })
 
-        //llamada al firestore
-        
-        const dbQuery = getFirestore()
-        //add tiene la versatilidad de q si la coleccion no existe la crea
-        dbQuery.collection('orders').add(orden)
-        .then(resp => console.log(resp))
-        .catch(err=> console.log(err))
-        .finally(()=> setFormData({
-            name:'',
-            phone:'',
-            email: ''
-        }))
+        if(validarEmail(formData.email,formData.reemail)) {
+            orden.date = firebase.firestore.Timestamp.fromDate(new Date())
+            orden.buyer = formData
+            orden.total = precioTotal()
+            orden.items = cartList.map(cartItem=> {
+                const id = cartItem.animal.id
+                const raza = cartItem.animal.raza
+                const precio = cartItem.animal.price * cartItem.quantity
+                return {id, raza, precio}
+            })
+
+            //llamada al firestore
+            
+            const dbQuery = getFirestore()
+            //add tiene la versatilidad de q si la coleccion no existe la crea
+            dbQuery.collection('orders').add(orden)
+            .then(resp =>  setIdOrden(resp.id))
+            .catch(err=> console.log(err))
+            .finally(()=> setFormData({
+                name : 'jose',
+                phone : '121212',
+                email : 'a@a.com',
+                reemail : 'a@a.com'
+            }))
+            alert('La compra se realizó exitosamente. \n Codigo de orden: '+idOrden.id+'\nPrecio: $'+orden.total+'\nGracias por su compra.')
+            
+        } else {
+            alert('En las casillas de mail se deben colocar mails validos, y ambos deben ser el mismo')
+        }
 
         //aqui tengo q agregar dsp el catch y el finally a la promise
         /** Habria q agregarle, tipo
@@ -185,9 +207,10 @@ export const Cart = () => {
                   onChange={handleChange}
             
             >
-                <input type='text' name='name' placeholder='name' value={formData.name}/>
-                <input type='text' name='phone' placeholder='tel' value={formData.phone}/>
-                <input type='email' name='email' placeholder='email' value={formData.email}/>
+                <input type='text' name='name' placeholder='Nombre' defaultValue='' value={formData.name}/>
+                <input type='text' name='phone' placeholder='Telefono' defaultValue='' value={formData.phone}/>
+                <input type='email' name='email' placeholder='Email' defaultValue='' value={formData.email}/>
+                <input type='email' name='reemail' placeholder='Repetir Email' defaultValue='' value={formData.reemail}/>
                 <button>Enviar</button>
             </form>
 

@@ -40,6 +40,11 @@ export function ItemDetail({animal}) {
                         <div className="card-content white-text">
                         <p>Detalles del Item</p>    
                         <span className="card-title">{animal.raza}</span>
+                        <figure className="img">
+                            <img src={`../assets/img/${animal.pictureURL}`} alt={animal.raza} />
+                            {/*<img src={`../assets/img/ovejero-aleman.jpg`} alt={animal.raza} />*/}
+                        </figure>
+
                         <p >Precio: ${animal.price}</p>
                         <p>{animal.description}</p>
                         
