@@ -79,7 +79,7 @@ export function NavBar() {
     <nav>
       <div className="nav-wrapper">
       <CartWidget />
-      <Link to='/' className="brand-logo">Tienda de Mascotas</Link>       
+      <Link to='/' className="brand-logo">Mascotas</Link>       
 
       {/*<a href="index.html" className="brand-logo">    Tienda de Mascotas</a>*/}
         
