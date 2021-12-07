@@ -21,7 +21,7 @@ _3. Se utiliza Materialize, para facilitar el manejo de estilos en el sitio_
 
 _Herramientas utilizadas para crea el proyecto:_
 
-* [Visual Studio Code](https://code.visualstudio.com/) - Como Editor de Códico
+* [Visual Studio Code](https://code.visualstudio.com/) - Como Editor de Código
 * [React](https://reactjs.org/) - Libreria javascript para el frontend
 * [Dillinger](https://dillinger.io/) - Para crear el archivo Readme.md
 
