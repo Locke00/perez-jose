@@ -4,7 +4,7 @@ import { useCartContext } from '../../context/CartContext'
 import { useState, useEffect } from "react";
 import { getFirestore } from '../../services/getFirestore';
 import firebase from "firebase"
-//import 'firebase/firestore'
+
 
 function validarEmail(email1,email2){
     let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -43,7 +43,7 @@ function FooterCart() {
 export const Cart = () => {
     const [idOrden, setIdOrden] = useState('')
     const {cartList, precioTotal, borrarElCarrito, borrarItem, obtenerQuantityTotal} = useCartContext()
-
+    const [ordenEstado, setOrdenEstado] = useState({})
     const [formData, setFormData] = useState({
         name : 'jose',
         phone : '121212',
@@ -95,20 +95,29 @@ export const Cart = () => {
                 return {id, raza, precio}
             })
 
+            setOrdenEstado(orden)
+
             //llamada al firestore
             
             const dbQuery = getFirestore()
             //add tiene la versatilidad de q si la coleccion no existe la crea
             dbQuery.collection('orders').add(orden)
-            .then(resp =>  setIdOrden(resp.id))
+            .then(resp => { 
+                console.log("hola"+resp.id);
+                return setIdOrden(resp.id)
+            })
             .catch(err=> console.log(err))
-            .finally(()=> setFormData({
+            .finally(()=> {
+             
+
+              setFormData({
                 name : 'jose',
                 phone : '121212',
                 email : 'a@a.com',
                 reemail : 'a@a.com'
-            }))
-            alert('La compra se realizó exitosamente. \n Codigo de orden: '+idOrden.id+'\nPrecio: $'+orden.total+'\nGracias por su compra.')
+              })
+            })
+            
             
         } else {
             alert('En las casillas de mail se deben colocar mails validos, y ambos deben ser el mismo')
@@ -194,11 +203,14 @@ export const Cart = () => {
     return (
         <div>
             <h5> Carrito </h5>
-            {  cartList.map((prod) => <>
+            {console.log(cartList)}
+            {  
+                cartList.map((prod) => 
+                
                     <li key={prod.animal.id} >Raza: {prod.animal.raza}. Cantidad: {prod.quantity} Precio: ${prod.animal.price} 
                         <button onClick = { ()=> borrarItem(prod.animal.id)}>Quitar del carrito</button>
                     </li>
-                </>
+                
             )}
             {  console.log('Cantidad total: '+obtenerQuantityTotal())          }
 
@@ -207,12 +219,20 @@ export const Cart = () => {
                   onChange={handleChange}
             
             >
-                <input type='text' name='name' placeholder='Nombre' defaultValue='' value={formData.name}/>
-                <input type='text' name='phone' placeholder='Telefono' defaultValue='' value={formData.phone}/>
-                <input type='email' name='email' placeholder='Email' defaultValue='' value={formData.email}/>
-                <input type='email' name='reemail' placeholder='Repetir Email' defaultValue='' value={formData.reemail}/>
+                <input type='text' name='name' placeholder='Nombre' defaultValue=''/>
+                <input type='text' name='phone' placeholder='Telefono' defaultValue=''/>
+                <input type='email' name='email' placeholder='Email' defaultValue=''/>
+                <input type='email' name='reemail' placeholder='Repetir Email' defaultValue=''/>
                 <button>Enviar</button>
             </form>
+            { idOrden &&
+                <h4>
+                    La compra se realizó exitosamente. <br/>
+                    Codigo de orden: {idOrden} 
+                    Precio: {ordenEstado.total}
+                    Gracias por su compra.
+                </h4>
+            }
 
 
         </div>
