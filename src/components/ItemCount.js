@@ -11,7 +11,6 @@ export function ItemCount({stock,initial,onAdd}) {
 
   const ButtonCount= ({count,onAdd})=> {
     return <button className="btn btn-outline-primary" onClick={()=>{
-        console.log('Producto agregado')
         onAdd(count)
         handleInput()
       }

@@ -1,24 +1,29 @@
 # Tienda de Mascotas
 
-_Es una pagina de ecommerce para comprar animales_
+_Es una pagina de ecommerce para comprar mascotas_
 
 
 
 ### Pre-requisitos 📋
 
-_Se Necesita react-router-dom la cual provee la navegabilidad al sitio. Puede ser instalado de la siguiente forma_
+_1. Se Necesita react-router-dom la cual provee la navegabilidad al sitio. Puede ser instalado de la siguiente forma:_
 
 ```
 npm install react-router-dom
 ```
+_2. Se utiliza Firebase para la persistencia de los datos_
+_3. Se utiliza Materialize, para facilitar el manejo de estilos en el sitio_
+
+
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
+_Herramientas utilizadas para crea el proyecto:_
 
 * [Visual Studio Code](https://code.visualstudio.com/) - Como Editor de Códico
 * [React](https://reactjs.org/) - Libreria javascript para el frontend
 * [Dillinger](https://dillinger.io/) - Para crear el archivo Readme.md
+
 
 
 ## Versionado 📌

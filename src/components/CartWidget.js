@@ -12,7 +12,6 @@ export  function ComponenteWidget() {
   }
 
 export function CartWidget() {
-
     return(
         <span>
             <ComponenteWidget/>

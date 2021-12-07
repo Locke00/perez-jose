@@ -16,8 +16,3 @@ export function getFirestore(){
     return firebase.firestore(app)
 }  
 
-
-
-
-
-

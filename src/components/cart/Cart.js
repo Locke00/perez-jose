@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { getFirestore } from '../../services/getFirestore';
 import firebase from "firebase"
 
-
 function validarEmail(email1,email2){
     let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     return emailRegex.test(email1) && (email1 === email2)
@@ -34,55 +33,20 @@ function FooterCart() {
                 </>    
         }
 
-
       </>
-    );
+    )
   }
 
 
 export const Cart = () => {
     const [idOrden, setIdOrden] = useState('')
-    const {cartList, precioTotal, borrarElCarrito, borrarItem, obtenerQuantityTotal} = useCartContext()
+    const {cartList, precioTotal, borrarItem} = useCartContext()
     const [ordenEstado, setOrdenEstado] = useState({})
-    const [formData, setFormData] = useState({
-        name : 'jose',
-        phone : '121212',
-        email : 'a@a.com',
-        reemail : 'a@a.com'
-    })
-
-    /*
-    const [formData, setFormData] = useState({
-        name : '',
-        phone : '',
-        email : '',
-        reemail : ''
-    })
-*/
-/*    const orden = {
-        buyer : {
-            name : 'jose perez',
-            phone : '381123123',
-            email : 'a@a.com'
-        },
-        items : [
-            {
-                id : '432523',
-                raza : 'Obejero Aleman',
-                price : 340
-            }
-        ],
-        total : 0
-    }
-*/
-
-    console.log('cartList: ')
-    console.log(cartList)
-  //  console.log(orden)
+    const [formData, setFormData] = useState({})
 
     const generarOrden = (e) => {
         e.preventDefault()
-        let orden = {}      //genera un objeto vacio
+        let orden = {}
 
         if(validarEmail(formData.email,formData.reemail)) {
             orden.date = firebase.firestore.Timestamp.fromDate(new Date())
@@ -98,91 +62,17 @@ export const Cart = () => {
             setOrdenEstado(orden)
 
             //llamada al firestore
-            
             const dbQuery = getFirestore()
-            //add tiene la versatilidad de q si la coleccion no existe la crea
             dbQuery.collection('orders').add(orden)
-            .then(resp => { 
-                console.log("hola"+resp.id);
-                return setIdOrden(resp.id)
-            })
+            .then(resp => setIdOrden(resp.id))
             .catch(err=> console.log(err))
             .finally(()=> {
-             
-
-              setFormData({
-                name : 'jose',
-                phone : '121212',
-                email : 'a@a.com',
-                reemail : 'a@a.com'
+              setFormData({ name : '', phone : '', email : '', reemail : ''
               })
             })
-            
-            
         } else {
             alert('En las casillas de mail se deben colocar mails validos, y ambos deben ser el mismo')
         }
-
-        //aqui tengo q agregar dsp el catch y el finally a la promise
-        /** Habria q agregarle, tipo
-           .add(orden).then(..)        
-           .catch(err => { setError(err)} )
-           .finally(()=>{setLoading(false)})            
-         */
-        
-        //tb hay un .add alternativo q me permite pasarme el id q le quiero poner al nuevo doc
-
-        //esta es la resp q me debe devolver:
-        /*    t {firestore: t, _delegate: t, _userDataWriter: n}
-            firestore: t {_delegate: n, Zc: t, INTERNAL: {…}, tu: FirebaseAppImpl}
-            _delegate: t {converter: null, _key: t, type: "document", firestore: n}
-            _userDataWriter: n {firestore: t}
-            id: "Wy3wuU0Sk3LNoQPykrUV"
-            parent: (...)
-            path: (...)
-            __proto__: Object
-        como la transacción fué exitosa, nos devuelve el id del elemento generado
-        si no hubiera devuelto un id, es q no se creó exitosamente el elemento    
-        */
- 
-        /*
-        //modificacion de un item:
-        const dbQuery = getFirestore()
-        dbQuery.collection('items').doc('5gECVndpOSaDc0bnYZt6').update({
-            price: 220
-        })
-        .then(resp=>console.log('precio modificado'))
-        //de esta forma tb puedo ir modificando el stock de cada elemento
-        */
-
-        //actualizar todolos los items q estan en el listado del cart
-
-        /*
-        esto tb tengo q ver si implementar el control del stock x item
-        const itemsToUpdate = dbQuery.collection('Items').where(
-            firebase.firestore.FieldPath.documentId(), 'in', cartList.map(i=>i.item.id)
-        )
-
-        const batch = dbQuery.batch()
-        */    
-        /*
-        //esto lo tengo q hacer si decido implementar el control de stock x item
-        //por cada item, restar del stock la cantidad en el carrito
-        itemsToUpdate.get()
-        .then( collection=>{
-            collection.docs.forEach(docSnapshot => {
-                batch.update(docSnapshot.ref, {
-                    stock: docSnapshot.data().stock - cartList.find(item => item.id === docSnapshot.id).quantity
-                })      //aqui falta gestionar el stock en cada item
-            })
-    
-            batch.commit().then(res =>{
-                console.log('resultado batch:', res)
-            })
-        })
-        */
-
-        //console.log(orden);
     }
 
     const handleChange = (e) => {
@@ -193,32 +83,20 @@ export const Cart = () => {
             }
         )
     }
-    console.log(formData);
-
-
-
-
-
 
     return (
         <div>
             <h5> Carrito </h5>
-            {console.log(cartList)}
             {  
                 cartList.map((prod) => 
-                
                     <li key={prod.animal.id} >Raza: {prod.animal.raza}. Cantidad: {prod.quantity} Precio: ${prod.animal.price} 
                         <button onClick = { ()=> borrarItem(prod.animal.id)}>Quitar del carrito</button>
                     </li>
-                
             )}
-            {  console.log('Cantidad total: '+obtenerQuantityTotal())          }
 
             <FooterCart/>
             <form onSubmit={generarOrden} 
-                  onChange={handleChange}
-            
-            >
+                  onChange={handleChange}>
                 <input type='text' name='name' placeholder='Nombre' defaultValue=''/>
                 <input type='text' name='phone' placeholder='Telefono' defaultValue=''/>
                 <input type='email' name='email' placeholder='Email' defaultValue=''/>
@@ -228,17 +106,12 @@ export const Cart = () => {
             { idOrden &&
                 <h4>
                     La compra se realizó exitosamente. <br/>
-                    Codigo de orden: {idOrden} 
-                    Precio: {ordenEstado.total}
+                    Codigo de orden: {idOrden} <br/> 
+                    Precio: {ordenEstado.total} <br/>
                     Gracias por su compra.
                 </h4>
             }
 
-
         </div>
     )
 }
-
-
-
-//{loading ? <h2>Loading... </h2> : <h3>Productos cargardos!</h3>}

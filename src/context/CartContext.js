@@ -4,15 +4,10 @@ import { useState } from 'react';
 const CartContext = createContext()
 export  const useCartContext = () => useContext(CartContext)
 
-
 const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
 
-
     function agregarAlCarrito(selectedAnimal) {
-        //acá hay q agregarle logica de q no agregue repetidos, if idInCart(animal,cartList), recien haga el setCartList
-        //sino q mande un alert, (q no admita duplicados)
-
         const findItem = cartList.find((item)=>item.animal.id===selectedAnimal.animal.id)
         if (findItem){
             console.log(findItem)
@@ -24,8 +19,6 @@ const CartContextProvider = ({children}) => {
                 }),
                 findItem
             ])
-            //setCartList(cartList)
-            console.log('elemento ya esta en el carrito');
         } else {
             setCartList([
                 ...cartList,
@@ -35,13 +28,9 @@ const CartContextProvider = ({children}) => {
     }
 
     const precioTotal =()=> {
-        return cartList.reduce((acum, prod)=> acum + (prod.quantity * prod.animal.price) , 0)  //el 0 es el valor inicial del acumulador
+        return cartList.reduce((acum, prod)=> acum + (prod.quantity * prod.animal.price) , 0)  
     }
 
-
-
-    //item= cartList[0].animal
-    //id1=item.id
     const mostrarListado = () =>{
         console.log(cartList);
     }
@@ -54,16 +43,11 @@ const CartContextProvider = ({children}) => {
         return cartList.reduce((acum, prod)=> acum + prod.quantity , 0)
     }
 
-
     const borrarElCarrito = () =>{
         setCartList([])
     }
 
-
-
-
     return (
-
         <CartContext.Provider value={{
             cartList,
             mostrarListado,
@@ -72,12 +56,6 @@ const CartContextProvider = ({children}) => {
             borrarItem,
             borrarElCarrito,
             obtenerQuantityTotal
-            //aqui adentro hay q inyectar mas cosas,
-            //metodos recomendados pero no obligatorios:
-            //addItem(item,quantity) //agregar cierta cantidad de un item al carrito
-            //removeItem(itemId)    //remover un item del cart
-            //clear() removte todos los items
-            //isInCart: (id) => true | false, si esta en el cartList
         }}>
             {children}
         </CartContext.Provider>
@@ -85,5 +63,3 @@ const CartContextProvider = ({children}) => {
 }
 
 export default CartContextProvider
-
-//las 2 lineas de arr es lo mismo q export const CartContext = createContext()
