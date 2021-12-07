@@ -2,18 +2,22 @@
 
 _Es una pagina de ecommerce para comprar mascotas_
 
+## Probar el sitio:
+
+_Para probar el sitio, hacer click en el siguiente enlace:_
+  [Tienda de Mascotas](https://supertiendademascotas.netlify.app/)
 
 
 ### Pre-requisitos 📋
 
-_1. Se Necesita react-router-dom la cual provee la navegabilidad al sitio. Puede ser instalado de la siguiente forma:_
+* Se Necesita react-router-dom la cual provee la navegabilidad al sitio. Puede ser instalado de la siguiente forma:
 
 ```
 npm install react-router-dom
 ```
-_2. Se utiliza Firebase para la persistencia de los datos_
+* Se utiliza Firebase para la persistencia de los datos
 
-_3. Se utiliza Materialize, para facilitar el manejo de estilos en el sitio_
+* Se utiliza Materialize, para facilitar el manejo de estilos en el sitio
 
 
 
