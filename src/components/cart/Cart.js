@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/CartContext'
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { getFirestore } from '../../services/getFirestore';
 import firebase from "firebase"
 
 function validarEmail(email1,email2){
-    let emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    let emailRegex = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     return emailRegex.test(email1) && (email1 === email2)
 }
 

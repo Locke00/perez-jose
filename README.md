@@ -12,6 +12,7 @@ _1. Se Necesita react-router-dom la cual provee la navegabilidad al sitio. Puede
 npm install react-router-dom
 ```
 _2. Se utiliza Firebase para la persistencia de los datos_
+
 _3. Se utiliza Materialize, para facilitar el manejo de estilos en el sitio_
 
 
