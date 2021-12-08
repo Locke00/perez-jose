@@ -10,14 +10,14 @@ _Para probar el sitio, hacer click en el siguiente enlace:_
 
 ### Pre-requisitos 📋
 
-* Se Necesita react-router-dom la cual provee la navegabilidad al sitio. Puede ser instalado de la siguiente forma:
+* Se Necesita react-router-dom (versión: 5.3.0) la cual provee la navegabilidad al sitio. Puede ser instalado de la siguiente forma:
 
 ```
 npm install react-router-dom
 ```
 * Se utiliza Firebase para la persistencia de los datos
 
-* Se utiliza Materialize, para facilitar el manejo de estilos en el sitio
+* Se utiliza Materialize (versión: 1.0.0), para facilitar el manejo de estilos en el sitio
 
 
 
