@@ -107,7 +107,7 @@ export const Cart = () => {
                 <h4>
                     La compra se realizó exitosamente. <br/>
                     Codigo de orden: {idOrden} <br/> 
-                    Precio: {ordenEstado.total} <br/>
+                    Precio: $ {ordenEstado.total} <br/>
                     Gracias por su compra.
                 </h4>
             }

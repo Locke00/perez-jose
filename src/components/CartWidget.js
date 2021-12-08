@@ -6,7 +6,7 @@ export  function ComponenteWidget() {
     return (
       <>
           <Link to='/cart'><i className="small material-icons left"  >shopping_cart</i></Link>
-          <span className="btn-floating" style={{color: "white",backgroundColor: "blue"}}>  {obtenerQuantityTotal()} </span>
+          <span className="btn-floating" style={{color: "white",backgroundColor: "black"}}>  {obtenerQuantityTotal()} </span>
       </>
     )
   }

@@ -10,7 +10,7 @@ export function ItemCount({stock,initial,onAdd}) {
   }
 
   const ButtonCount= ({count,onAdd})=> {
-    return <button className="btn btn-outline-primary" onClick={()=>{
+    return <button className="btn" onClick={()=>{
         onAdd(count)
         handleInput()
       }
@@ -18,7 +18,7 @@ export function ItemCount({stock,initial,onAdd}) {
   }
   
   const InputCount= ()=> {
-      return <Link to="/cart" className="btn btn-outline-primary">Terminar compra</Link>
+      return <Link to="/cart" className="btn">Terminar compra</Link>
   }
   
   function incrementarContador() {

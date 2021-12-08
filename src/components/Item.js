@@ -9,7 +9,7 @@ export function Item({item}) {
                         <div className="card-content white-text">
                             <p>Codigo: {item.id}</p>
                             <p>Tipo: {item.categoria}</p>
-                            <span className="card-title">{item.raza}</span>
+                            <span>{item.raza}</span>
                             <p>{item.description}</p>
                             <div>
                                 <Link to={`/detalle/${item.id}`}>
