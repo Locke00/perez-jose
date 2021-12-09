@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { CartWidget } from "./CartWidget"
 
-
 export function NavBar() {
   return (
     <nav className='blue'>
