@@ -5,10 +5,8 @@ export function NavBar() {
   return (
     <nav className='blue'>
       <div className="nav-wrapper">
-        <span className='left'>
-          <CartWidget />
-          <Link to='/' className="brand-logo truncate ">Tienda de mascotas</Link>       
-        </span>
+        <CartWidget />
+        <Link to='/' className="brand-logo truncate ">Tienda de mascotas</Link>       
         <ul className="right blue truncate">
           <li><Link to="/">Inicio</Link></li>
           <li><Link to="/">Explorar Animales</Link></li>
@@ -18,7 +16,6 @@ export function NavBar() {
         </ul>
       </div>
     </nav>
-    
   )
 }
   
