@@ -41,7 +41,7 @@ function FooterCart() {
 export const Cart = () => {
     const [idOrden, setIdOrden] = useState('')
     const {cartList, precioTotal, borrarItem} = useCartContext()
-    const [ordenEstado, setOrdenEstado] = useState({})
+    const [totalOrden, setTotalOrden] = useState(0)
     const [formData, setFormData] = useState({})
 
     const generarOrden = (e) => {
@@ -59,7 +59,7 @@ export const Cart = () => {
                 return {id, raza, precio}
             })
 
-            setOrdenEstado(orden)
+            setTotalOrden(orden.total)
 
             //llamada al firestore
             const dbQuery = getFirestore()
@@ -107,7 +107,7 @@ export const Cart = () => {
                 <h4>
                     La compra se realizó exitosamente. <br/>
                     Codigo de orden: {idOrden} <br/> 
-                    Precio: $ {ordenEstado.total} <br/>
+                    Precio: $ {totalOrden} <br/>
                     Gracias por su compra.
                 </h4>
             }
