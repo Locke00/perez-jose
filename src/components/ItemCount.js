@@ -1,36 +1,36 @@
 import { useState } from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function ItemCount({stock,initial,onAdd}) {
-  const [count, setCount] = useState(initial);
-  const [inputType, setInputType] = useState("input");
+    const [count, setCount] = useState(initial);
+    const [inputType, setInputType] = useState("input");
 
-  const handleInput = () => {
+    const handleInput = () => {
     setInputType("buy");
-  }
-
-  const ButtonCount= ({count,onAdd})=> {
-    return <button className="btn" onClick={()=>{
-        onAdd(count)
-        handleInput()
-      }
-    }>Agregar Al carrito</button>
-  }
-  
-  const InputCount= ()=> {
-      return <Link to="/cart" className="btn">Terminar compra</Link>
-  }
-  
-  function incrementarContador() {
-    if (count<stock){
-      setCount(count + 1)
     }
-  }
+
+    const ButtonCount= ({count,onAdd})=> {
+        return <button className="btn" onClick={()=>{
+            onAdd(count)
+            handleInput()
+            }
+        }>Agregar Al carrito</button>
+    }
+
+    const InputCount= ()=> {
+        return <Link to="/cart" className="btn">Terminar compra</Link>
+    }
+  
+    function incrementarContador() {
+        if (count<stock){
+            setCount(count + 1)
+        }
+    }
 
   function decrementarContador() {
-    if (count>1)  {
-      setCount(count - 1)
-    }
+        if (count>1)  {
+            setCount(count - 1)
+        }
   }
 
   return(
