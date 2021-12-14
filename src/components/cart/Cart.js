@@ -40,10 +40,10 @@ function FooterCart() {
 
 export const Cart = () => {
     const [idOrden, setIdOrden] = useState('')
-    const {cartList, precioTotal, borrarItem} = useCartContext()
+    const {obtenerQuantityTotal, cartList, precioTotal, borrarItem} = useCartContext()
     const [totalOrden, setTotalOrden] = useState(0)
     const [formData, setFormData] = useState({})
-
+    
     const generarOrden = (e) => {
         e.preventDefault()
         let orden = {}
@@ -95,14 +95,18 @@ export const Cart = () => {
             )}
 
             <FooterCart/>
-            <form onSubmit={generarOrden} 
-                  onChange={handleChange}>
-                <input type='text' name='name' placeholder='Nombre' defaultValue=''/>
-                <input type='text' name='phone' placeholder='Telefono' defaultValue=''/>
-                <input type='email' name='email' placeholder='Email' defaultValue=''/>
-                <input type='email' name='reemail' placeholder='Repetir Email' defaultValue=''/>
-                <button>Enviar</button>
-            </form>
+
+            { (obtenerQuantityTotal()!==0) && 
+
+                <form onSubmit={generarOrden} 
+                    onChange={handleChange}>
+                    <input type='text' name='name' placeholder='Nombre' defaultValue=''/>
+                    <input type='text' name='phone' placeholder='Telefono' defaultValue=''/>
+                    <input type='email' name='email' placeholder='Email' defaultValue=''/>
+                    <input type='email' name='reemail' placeholder='Repetir Email' defaultValue=''/>
+                    <button>Enviar</button>
+                </form>
+            }
             { idOrden &&
                 <h4>
                     La compra se realizó exitosamente. <br/>
